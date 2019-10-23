@@ -1,0 +1,6 @@
+---
+- hosts: publisher
+  become: true
+  roles:
+    - common
+    - publisher

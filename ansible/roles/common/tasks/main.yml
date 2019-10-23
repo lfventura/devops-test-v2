@@ -1,0 +1,11 @@
+---
+- name: Put SELinux in permissive mode
+  selinux:
+    policy: targeted
+    state: permissive
+
+- name: Disable Firewall
+  systemd:
+    name: firewalld
+    state: stopped
+    enabled: no

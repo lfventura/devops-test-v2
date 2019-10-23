@@ -1,0 +1,51 @@
+---
+- name: Uninstall old version from docker
+  yum:
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ docker_old_packages }}"
+
+- name: Ensure depends is installed
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ docker_depends }}"
+
+- name: Add docker repo
+  shell: |
+    yum-config-manager \
+    --add-repo \
+    {{ docker_repo }}
+  args:
+    creates: /etc/yum.repos.d/docker-ce.repo
+
+- name: Ensure docker is installed
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ docker_packages }}"
+
+- name: Add docker_admins to docker group
+  user:
+    name: "{{ item }}"
+    append: yes
+    group: docker
+  with_items: "{{ docker_admins }}"
+
+- name: Ensure docker service is up and running
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
+- name: Copy daemon.json
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+  notify:
+    - restart docer
+
+- meta: flush_handlers
+
+- include_tasks: containers.yml

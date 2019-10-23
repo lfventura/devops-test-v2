@@ -1,0 +1,17 @@
+{
+  "name": "nodeapp",
+  "version": "1.0.0",
+  "description": "A cool node app",
+  "main": "main.js",
+  "scripts": {
+    "test:unit": "echo \"Alleged test\" && exit 0",
+    "test:security": "echo \"Alleged sectest\" && exit 0"
+  },
+  "author": "Somebody",
+  "license": "ISC",
+  "dependencies": {
+    "cities": "^2.0.0",
+    "supertest": "^4.0.2",
+    "tape": "^4.11.0"
+  }
+}

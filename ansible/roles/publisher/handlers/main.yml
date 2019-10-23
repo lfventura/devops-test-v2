@@ -1,0 +1,6 @@
+---
+- name: restart publisher
+  systemd:
+    name: publisher
+    state: restarted
+    daemon_reload: yes

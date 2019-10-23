@@ -1,0 +1,5 @@
+---
+publisher_depends:
+  - python
+publisher_pkg:
+  - publisher.rpm

@@ -1,0 +1,20 @@
+---
+- name: Ensure python-pip is present
+  yum:
+    name: python-pip
+    state: present
+
+- name: Ensure pip docker-py is present
+  pip:
+    name: docker-py
+    state: present
+
+- name: Create a rabbitmq container
+  docker_container:
+    name: "{{ item.name }}"
+    image: "{{ item.image }}"
+    state: "{{ item.state | default('started') }}"
+    ports: "{{ item.ports | default(omit) }}"
+    env: "{{ item.env | default(omit) }}"
+    volumes: "{{ item.volumes | default(omit) }}"
+  with_items: "{{ containers }}"

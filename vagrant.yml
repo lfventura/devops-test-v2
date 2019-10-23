@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - lineinfile:
+        path: /etc/hosts
+        state: absent
+        regexp: "{{ item }}"
+      loop:
+        - '^127\.0\.0\.1\W+jenkins'
+        - '^127\.0\.0\.1\W+docker'
+
+    - lineinfile:
+        path: /etc/hosts
+        state: present
+        line: "{{ item }}"
+      loop:
+        - 10.12.0.10   jenkins.local
+        - 10.12.0.11   docker.local
+        - 10.12.0.12   publisher.local

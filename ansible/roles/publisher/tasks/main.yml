@@ -1,0 +1,26 @@
+---
+- name: Ensure depends is installed
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ publisher_depends }}"
+
+- name: Copy rpm
+  copy:
+    src: "{{ publisher_pkg }}"
+    dest: /tmp/
+
+- name: Ensure the last version from app
+  yum:
+    name: "/tmp/{{ item }}"
+    state: latest
+  with_items:
+    - {{ publisher_pkg }}
+  notify:
+    - restart publisher
+
+- name: Enable/Start publisher service
+  systemd:
+    name: publisher
+    state: started
+    daemon_reload: yes
