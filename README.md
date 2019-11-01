@@ -51,3 +51,4 @@ ansible-playbook jenkins.yml -i inventory
 5. Descreva o que seria o ideal em sua opnião referente a monitoramento do site que acabamos de subir. O que devemos monitorar e quais ferramentas poderiam ser utilizadas?
 6. Qual é a relevância de uma entrada PTR no DNS?
 7. Com quais Nuvens publicas você já trabalhou?
+8. O que é o Ansible Galaxy?
