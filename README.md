@@ -45,8 +45,9 @@ ansible-playbook jenkins.yml -i inventory
 
 ## Questões
 1. Suponha que a aplicação web já está rodando a um tempo e começou a receber um grande volume de tráfego. Que técnicas você aplicaria para garantir a performance do site?
-2. Explique brevemente: Como você faria para promover o código do ambiente de DEV até produção? Quantos ambientes você acha necessário e qual processo faria para a promoção entre os ambientes?
-3. O que é CI? O que é CD? Quais ferramentas você conhece?
-4. Descreva o que seria o ideal em sua opnião referente a monitoramento do site que acabamos de subir. O que devemos monitorar e quais ferramentas poderiam ser utilizadas?
-5. Qual é a relevância de uma entrada PTR no DNS?
-6. Com quais Nuvens publicas você já trabalhou?
+2. O log da aplicação é enviado para stdout. Qual seria a melhor forma para receber esse log em um syslog server?
+3. Explique brevemente: Como você faria para promover o código do ambiente de DEV até produção? Quantos ambientes você acha necessário e qual processo faria para a promoção entre os ambientes?
+4. O que é CI? O que é CD? Quais ferramentas você conhece?
+5. Descreva o que seria o ideal em sua opnião referente a monitoramento do site que acabamos de subir. O que devemos monitorar e quais ferramentas poderiam ser utilizadas?
+6. Qual é a relevância de uma entrada PTR no DNS?
+7. Com quais Nuvens publicas você já trabalhou?
